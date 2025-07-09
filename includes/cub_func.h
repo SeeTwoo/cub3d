@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.h                                              :+:      :+:    :+:   */
+/*   cub_func.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/04 18:37:53 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/06 07:27:13 by seetwoo          ###   ########.fr       */
+/*   Created: 2025/07/06 05:53:18 by seetwoo           #+#    #+#             */
+/*   Updated: 2025/07/08 23:12:25 by seetwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#ifndef CUB_FUNC_H
+# define CUB_FUNC_H
 
-# include "libft.h"
-# include "cub_struct.h"
-# include "cub_func.h"
-# include "mlx.h"
-# include <math.h>
-# include <errno.h>
-# include <stdio.h>
-
-# ifndef WIN_W
-#  define WIN_W 960
-# endif
-
-# ifndef WIN_H
-#  define WIN_H 600
-# endif
-
-# ifndef PI
-#  define PI 3.14159265358979323846
-# endif
+void	compute_camera_plane(t_cub *cub);
+void	compute_dir_vector(t_cub *cub);
+void	compute_raydir(t_cub *cub, t_ray *ray, double cameraX);
+void	dda(t_cub *cub, t_ray *ray);
+int		int_pow(int n, int pow);
+void	raycasting(t_cub *cub);
 
 #endif

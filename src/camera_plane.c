@@ -1,36 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.h                                              :+:      :+:    :+:   */
+/*   camera_plane.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/04 18:37:53 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/06 07:27:13 by seetwoo          ###   ########.fr       */
+/*   Created: 2025/07/06 02:31:26 by seetwoo           #+#    #+#             */
+/*   Updated: 2025/07/06 03:56:29 by seetwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#include "cub.h"
 
-# include "libft.h"
-# include "cub_struct.h"
-# include "cub_func.h"
-# include "mlx.h"
-# include <math.h>
-# include <errno.h>
-# include <stdio.h>
-
-# ifndef WIN_W
-#  define WIN_W 960
-# endif
-
-# ifndef WIN_H
-#  define WIN_H 600
-# endif
-
-# ifndef PI
-#  define PI 3.14159265358979323846
-# endif
-
-#endif
+void	compute_camera_plane(t_cub *cub)
+{
+	cub->camplanex = 0.6 * cub->diry;
+	cub->camplaney = 0.6 * -cub->dirx;
+}

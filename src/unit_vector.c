@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.h                                              :+:      :+:    :+:   */
+/*   unit_vector.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/04 18:37:53 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/06 07:27:13 by seetwoo          ###   ########.fr       */
+/*   Created: 2025/07/05 16:55:39 by seetwoo           #+#    #+#             */
+/*   Updated: 2025/07/09 02:19:40 by seetwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#include "cub.h"
 
-# include "libft.h"
-# include "cub_struct.h"
-# include "cub_func.h"
-# include "mlx.h"
-# include <math.h>
-# include <errno.h>
-# include <stdio.h>
+double	deg_to_rad(int angle)\
+{
+	return ((PI/180) * angle);
+}
 
-# ifndef WIN_W
-#  define WIN_W 960
-# endif
-
-# ifndef WIN_H
-#  define WIN_H 600
-# endif
-
-# ifndef PI
-#  define PI 3.14159265358979323846
-# endif
-
-#endif
+void	compute_dir_vector(t_cub *cub)
+{
+	cub->dirx = sin(deg_to_rad(cub->pangle));
+	cub->diry = cos(deg_to_rad(cub->pangle));
+	printf("\ndirx = %f and diry = %f\n\n", cub->dirx, cub->diry);
+}

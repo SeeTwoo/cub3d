@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror
 DFLAGS = $(CFLAGS) -g3
 
 IFLAGS = -I/usr/include -Iminilibx-linux -Iincludes -Ilibft/includes
-LDFLAGS = -lXext -lX11 -lm -lz
+LDFLAGS = -lXext -lX11 -lm
 
 LIB_DIR = libft
 LIB_NAME = $(LIB_DIR)/libft.a
@@ -12,7 +12,13 @@ MLX_DIR = minilibx-linux
 MLX_NAME = $(MLX_DIR)/libmlx.a
 
 SRC_DIR = src
-SRC_FILES = main.c
+SRC_FILES = camera_plane.c \
+			dda.c \
+			integer_math.c \
+			main.c \
+			raycasting.c \
+			ray_dir.c \
+			unit_vector.c
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 OBJ_DIR = obj

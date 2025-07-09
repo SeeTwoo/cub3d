@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.h                                              :+:      :+:    :+:   */
+/*   integer_math.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/04 18:37:53 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/06 07:27:13 by seetwoo          ###   ########.fr       */
+/*   Created: 2025/07/08 21:07:18 by seetwoo           #+#    #+#             */
+/*   Updated: 2025/07/09 02:37:51 by seetwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#include "cub.h"
 
-# include "libft.h"
-# include "cub_struct.h"
-# include "cub_func.h"
-# include "mlx.h"
-# include <math.h>
-# include <errno.h>
-# include <stdio.h>
+int	int_pow(int n, int pow)
+{
+	int	i;
+	int	result;
 
-# ifndef WIN_W
-#  define WIN_W 960
-# endif
-
-# ifndef WIN_H
-#  define WIN_H 600
-# endif
-
-# ifndef PI
-#  define PI 3.14159265358979323846
-# endif
-
-#endif
+	if (pow == 0)
+		return (1);
+	i = 1;
+	result = n;
+	while (i < pow)
+	{
+		result *= n;
+		i++;
+	}
+	return (result);
+}
