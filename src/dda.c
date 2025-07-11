@@ -6,42 +6,65 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 08:05:31 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/09 04:45:45 by seetwoo          ###   ########.fr       */
+/*   Updated: 2025/07/11 04:42:59 by seetwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	get_sign(double n)
+static inline int	get_sign(double n)
 {
 	return (*(long long *)&n >> 63 & 1);
 }
 
-int	get_closest_border(int coor_sign, int player_pos)
+static inline int	get_closest_border(int coor_sign, int pos)
 {
-	return ((player_pos - (player_pos % 64)) + (64 * (1 - coor_sign)));
+	return (((pos + 1) * 64) - (64 * coor_sign));
 }
 
-int	ratio_diff(t_ray *ray)
+int	x_or_y(t_ray *ray)
 {
-	return (ray->off_x / ray->off_y < ray->raydirx / ray->raydiry);
+	double	off_tan;
+	double	ray_tan;
+
+	if (ray->raydirx)
+		return (1);
+	if (ray->raydiry)
+		return (0);
+	off_tan = (double)ray->off_x / (double)ray->off_y;
+	ray_tan = ray->raydirx / ray->raydiry;
+	return (off_tan > ray_tan);
+}
+
+void	ray_update(t_cub *cub, t_ray *ray)
+{
+	ray->x_edge = get_closest_border(ray->x_sign, ray->j);
+	ray->y_edge = get_closest_border(ray->y_sign, ray->i);
+	ray->off_x = ray->x_edge - cub->px;
+	ray->off_y = ray->y_edge - cub->py;
+	ray->x_or_y = x_or_y(ray);
+}
+
+void	ray_init(t_cub *cub, t_ray *ray)
+{
+	ray->x_sign = get_sign(ray->raydirx);
+	ray->y_sign = get_sign(ray->raydiry);
+	ray->i = cub->px / 64;
+	ray->j = cub->py / 64;
+	ray_update(cub, ray);
 }
 
 int	wall_hit(t_cub *cub, t_ray *ray)
 {
-	int	i;
-	int	j;
+	printf("new cycle ==========================================================\n\n");
+	print_data(cub, ray);
 
-	i = ray->y_edge / 64;
-	j = ray->x_edge / 64;
-	printf("x edge is %d and y edge is %d\ni is %d and j is %d\n", ray->x_edge, ray->y_edge, i, j);
-	printf("off_x = %d and off_y = %d\n\n", ray->off_x, ray->off_y);
-	if ((ray->raydirx == 0 || ray->ratio_diff)
-			&& cub->map[i - (2 * ray->y_sign)][j] == '1')
-		return (1);
-	if ((ray->raydiry == 0 || !ray->ratio_diff)
-			&& cub->map[i][j - (2 * ray->x_sign)] == '1')
-		return (1);
+	if (ray->x_or_y
+			&& cub->map[ray->i + 1 - (2 * ray->y_sign)][ray->j] == '1')
+		return (printf("vertical\n\n"), 1);
+	if (!ray->x_or_y
+			&& cub->map[ray->i][ray->j + 1 - (2 * ray->x_sign)] == '1')
+		return (printf("horizontal\n\n"), 1);
 	return (0);
 }
 
@@ -50,25 +73,20 @@ void	dda(t_cub *cub, t_ray *ray)
 	int	i;
 
 	i = 0;
-	ray->x_sign = get_sign(ray->raydirx);
-	ray->y_sign = get_sign(ray->raydiry);
-	ray->x_edge = get_closest_border(ray->x_sign, cub->px);
-	ray->y_edge = get_closest_border(ray->y_sign, cub->py);
-	ray->off_x = cub->px - ray->x_edge;
-	ray->off_y = cub->py - ray->y_edge;
-	ray->ratio_diff = ratio_diff(ray);
-	printf("player is at x = %d and y = %d\nclosest borders are x = %d and y %d\n",
-			cub->px, cub->py, ray->x_edge, ray->y_edge);
-	printf("pangle is %d, ray x = %f ray y = %f\n\n", cub->pangle, ray->raydirx, ray->raydiry);
+	ray_init(cub, ray);
 	while (wall_hit(cub, ray) == 0 && i < 10)
 	{
-		if (ray->raydirx == 0 || ray->ratio_diff)
-			ray->y_edge += 64 * (1 - (2 * ray->y_sign));
+		if (ray->x_or_y)
+		{
+			printf("add to i\n\n");
+			ray->i += 1 - (2 * ray->y_sign);
+		}
 		else
-			ray->x_edge += 64 * (1 - (2 * ray->x_sign)); 
-		ray->off_x = cub->px - ray->x_edge;
-		ray->off_y = cub->py - ray->y_edge;
-		ray->ratio_diff = ratio_diff(ray);
+		{
+			printf("add to j\n\n");
+			ray->j += 1 - (2 * ray->x_sign); 
+		}
+		ray_update(cub, ray);
 		i++;
 	}
 	printf("wall is x = %d and y = %d\n", ray->x_edge, ray->y_edge);

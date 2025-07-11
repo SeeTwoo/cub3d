@@ -16,6 +16,7 @@ SRC_FILES = camera_plane.c \
 			dda.c \
 			integer_math.c \
 			main.c \
+			printing_data.c \
 			raycasting.c \
 			ray_dir.c \
 			unit_vector.c

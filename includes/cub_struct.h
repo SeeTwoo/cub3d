@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 18:48:27 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/09 01:13:01 by seetwoo          ###   ########.fr       */
+/*   Updated: 2025/07/11 04:24:27 by seetwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,15 @@ struct s_ray
 	double	raydiry;
 	int		x_sign;
 	int		y_sign;
+	int		i;
+	int		j;
 	int		x_edge;
 	int		y_edge;
-	int		wall_x;
-	int		wall_y;
 	int		off_x;
 	int		off_y;
-	int		ratio_diff;
+	int		x_or_y;
+	int		wall_x;
+	int		wall_y;
 };
 
 struct s_data
