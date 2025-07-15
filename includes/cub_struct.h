@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 18:48:27 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/11 04:24:27 by seetwoo          ###   ########.fr       */
+/*   Updated: 2025/07/15 06:45:35 by seetwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,30 +38,31 @@ struct s_cub
 	t_data	*img;
 	void	*mlx;
 	void	*mlx_win;
-	int		px;
-	int		py;
+	double	px;
+	double	py;
 	int		pangle;
 	double	dirx;
 	double	diry;
-	double	camplanex;
-	double	camplaney;
+	double	camx;
+	double	camy;
 };
 
+//side is a status varibable to know if the wall was horizontal (0) or vertical (1);
 struct s_ray
 {
-	double	raydirx;
-	double	raydiry;
-	int		x_sign;
-	int		y_sign;
-	int		i;
-	int		j;
-	int		x_edge;
-	int		y_edge;
-	int		off_x;
-	int		off_y;
-	int		x_or_y;
-	int		wall_x;
-	int		wall_y;
+	double	rayx;
+	double	rayy;
+	int		xsign;
+	int		ysign;
+	double	distx;
+	double	disty;
+	double	stepx;
+	double	stepy;
+	int		mapx;
+	int		mapy;
+	int		map_step_x;
+	int		map_step_y;
+	int		side;
 };
 
 struct s_data

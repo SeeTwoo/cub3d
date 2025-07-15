@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   integer_math.c                                     :+:      :+:    :+:   */
+/*   vectors.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 21:07:18 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/09 02:37:51 by seetwoo          ###   ########.fr       */
+/*   Created: 2025/07/15 05:55:52 by seetwoo           #+#    #+#             */
+/*   Updated: 2025/07/15 07:16:59 by seetwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	int_pow(int n, int pow)
-{
-	int	i;
-	int	result;
+//pi / 180 is for degrees to radians conversion
 
-	if (pow == 0)
-		return (1);
-	i = 1;
-	result = n;
-	while (i < pow)
-	{
-		result *= n;
-		i++;
-	}
-	return (result);
+void	vectors(t_cub *cub)
+{
+	cub->dirx = sin((PI / 180) * cub->pangle);
+	cub->diry = cos((PI/ 180) * cub->pangle);
+	cub->camx = -cub->dirx;
+	cub->camy = cub->diry;
+//	printf("dirx = %f and diry = %f\n\n", cub->dirx, cub->diry);
 }

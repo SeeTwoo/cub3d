@@ -12,14 +12,9 @@ MLX_DIR = minilibx-linux
 MLX_NAME = $(MLX_DIR)/libmlx.a
 
 SRC_DIR = src
-SRC_FILES = camera_plane.c \
-			dda.c \
-			integer_math.c \
-			main.c \
-			printing_data.c \
+SRC_FILES = main.c \
 			raycasting.c \
-			ray_dir.c \
-			unit_vector.c
+			vectors.c
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 OBJ_DIR = obj
