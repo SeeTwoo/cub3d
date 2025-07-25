@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 18:37:53 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/06 07:27:13 by seetwoo          ###   ########.fr       */
+/*   Updated: 2025/07/24 09:07:49 by seetwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <stdio.h>
 
 # ifndef WIN_W
-#  define WIN_W 960
+#  define WIN_W	1000 
 # endif
 
 # ifndef WIN_H

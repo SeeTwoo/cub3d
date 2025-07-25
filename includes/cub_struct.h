@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 18:48:27 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/15 06:45:35 by seetwoo          ###   ########.fr       */
+/*   Updated: 2025/07/23 16:18:49 by seetwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@ typedef struct s_cub	t_cub;
 typedef struct s_data	t_data;
 typedef struct s_ray	t_ray;
 
+struct s_data
+{
+	void	*img;
+	char	*addr;
+	int		bpx;
+	int		ln_len;
+	int		endn;
+};
 /*
 px is player x position
 py is player y position
@@ -35,7 +43,7 @@ struct s_cub
 	int		north_text[64][64];
 	int		east_text[64][64];
 	int		south_text[64][64];
-	t_data	*img;
+	t_data	img;
 	void	*mlx;
 	void	*mlx_win;
 	double	px;
@@ -63,15 +71,8 @@ struct s_ray
 	int		map_step_x;
 	int		map_step_y;
 	int		side;
-};
-
-struct s_data
-{
-	void	*img;
-	char	*addr;
-	int		bpx;
-	int		ln_len;
-	int		endn;
+	double	dist;
+	double	wall_column;
 };
 
 #endif

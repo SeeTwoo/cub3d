@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 DFLAGS = $(CFLAGS) -g3
 
 IFLAGS = -I/usr/include -Iminilibx-linux -Iincludes -Ilibft/includes
@@ -12,7 +12,8 @@ MLX_DIR = minilibx-linux
 MLX_NAME = $(MLX_DIR)/libmlx.a
 
 SRC_DIR = src
-SRC_FILES = main.c \
+SRC_FILES = fill_column.c \
+			main.c \
 			raycasting.c \
 			vectors.c
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
@@ -23,8 +24,6 @@ OBJ = $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 NAME = cub3d
 
 all: $(LIBFT_NAME) $(MLX_NAME) $(NAME)
-
-bonus: all
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)

@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 05:21:55 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/15 07:39:02 by seetwoo          ###   ########.fr       */
+/*   Updated: 2025/07/25 09:31:51 by seetwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,54 +22,84 @@ int	int_pow(int n, int pow)
 	return (1);
 }
 
+void	wall_intersection(t_cub *cub, t_ray *ray)
+{
+	if (ray->side == 0)
+	{
+		ray->dist = (ray->mapx - cub->px + (1 - ray->map_step_x) / 2) / ray->rayx;
+		ray->wall_column = cub->py + ray->dist * ray->rayy;
+	}
+	else
+	{
+		ray->dist = (ray->mapy - cub->py + (1 - ray->map_step_y) / 2) / ray->rayy;
+		ray->wall_column = cub->px + ray->dist * ray->rayx;
+	}
+}
+
 void	ray_init(t_cub *cub, t_ray *ray, double cameraX)
 {
 	ray->rayx = cub->dirx + (cub->camx * cameraX);
 	ray->rayy = cub->diry + (cub->camy * cameraX);
 	ray->xsign = (*(long long *)&ray->rayx) >> 63 & 1;
 	ray->ysign = (*(long long *)&ray->rayy) >> 63 & 1;
-	ray->mapx = (int)cub->px;
-	ray->mapy = (int)cub->py;
+	ray->stepx = fabs(1.0 / ray->rayx);
+	ray->stepy = fabs(1.0 / ray->rayy);
 	if (ray->xsign)
-		ray->distx = (cub->px - ray->mapx) * ray->rayx;
+		ray->distx = (cub->px - (double)ray->mapx) * -ray->rayx;
 	else
-		ray->distx = (1.0 - (cub->px - ray->mapx)) * ray->rayx;
+		ray->distx = (1.0 - (cub->px - (double)ray->mapx)) * ray->rayx;
 	if (ray->ysign)
-		ray->disty = (cub->py - ray->mapy) * ray->rayy;
+		ray->disty = (cub->py - (double)ray->mapy) * -ray->rayy;
 	else
-		ray->disty = (1.0 - (cub->py - ray->mapy)) * ray->rayy;
-	ray->stepx = fabs(1 / ray->rayx);
-	ray->stepy = fabs(1 / ray->rayy);
+		ray->disty = (1.0 - (cub->py - (double)ray->mapy)) * ray->rayy;
 	ray->map_step_x = int_pow(-1, ray->xsign);
 	ray->map_step_y = int_pow(-1, ray->ysign);
 }
 
-void	dda(t_cub *cub, t_ray *ray, double cameraX)
+void	dda(t_cub *cub, t_ray *ray, int x)
 {
-	ray_init(cub, ray, cameraX);
+	float	cam_x;
+
+	cam_x = -1.0 + ((double)x * (2.0 / WIN_W));
+	ray_init(cub, ray, cam_x);
 	while (cub->map[ray->mapy][ray->mapx] != '1')
 	{
-		if (ray->distx < ray->disty)
+		if (ray->rayx && ray->distx < ray->disty)
 		{
+			if (x == 0 || x == WIN_W - 1)
+				printf("\nhorizontal move, distx = %f and disty = %f\n", ray->distx, ray->disty);
 			ray->distx += ray->stepx;
 			ray->mapx += ray->map_step_x;
 			ray->side = 0;
 		}
 		else
 		{
+			if (x == 0 || x == WIN_W - 1)
+				printf("\nvertical move\n");
 			ray->disty += ray->stepy;
 			ray->mapy += ray->map_step_y;
 			ray->side = 1;
 		}
 	}
-	printf("hit the %d, %d wall\n", ray->mapx, ray->mapy);
+	if (x == 0 || x == WIN_W - 1)
+		printf("wall is on %d, %d and it is %c\n", ray->mapx, ray->mapy, cub->map[ray->mapx][ray->mapy]);
+	wall_intersection(cub, ray);
 }
 
 void	raycasting(t_cub *cub)
 {
 	t_ray	ray;
+	int		x;
 
-	dda(cub, &ray, 0);
+	x = 0;
+	while (x < WIN_W)
+	{
+		ray.mapx = (int)cub->px;
+		ray.mapy = (int)cub->py;
+		dda(cub, &ray, x);
+		fill_column(cub, ray, x);
+		x++;
+	}
 }
 
 /*

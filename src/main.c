@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 22:37:17 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/15 05:51:46 by seetwoo          ###   ########.fr       */
+/*   Updated: 2025/07/25 08:09:37 by seetwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void	crash_init(t_cub *cub, int angle)
 	cub->px = 2.5;
 	cub->py = 2.5;
 	cub->pangle = angle;
+	cub->mlx = mlx_init();
+	cub->mlx_win = mlx_new_window(cub->mlx, WIN_W, WIN_H, "cub3d");
+	cub->img.img = mlx_new_image(cub->mlx, WIN_W, WIN_H);
+	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bpx,
+				&cub->img.ln_len, &cub->img.endn);
 }
 
 int	main(int ac, char **av)
@@ -30,11 +35,10 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
-//j	init(t_cub *cub);
 //	temp_text_init(&cub);
-//	mlx_put_image_to_window(arg.mlx, arg.mlx_win, arg.img.img, 0, 0);
-//	mlx_loop(arg.mlx);
 	crash_init(&cub, ft_atoi(av[1]));
 	vectors(&cub);
 	raycasting(&cub);
+	mlx_put_image_to_window(cub.mlx, cub.mlx_win, cub.img.img, 0, 0);
+	mlx_loop(cub.mlx);
 }
