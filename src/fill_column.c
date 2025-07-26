@@ -6,7 +6,7 @@
 /*   By: seetwoo <seetwoo@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 13:03:12 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/24 08:52:23 by seetwoo          ###   ########.fr       */
+/*   Updated: 2025/07/26 12:28:42 by wbeschon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	get_color(t_ray ray)
 	if (ray.side == 0 && ray.rayx > 0)
 		return (0x0000FFFF);
 	if (ray.side == 1 && ray.rayy < 0)
-		return (0x00FFA500);
+		return (0x00F00020);
 	if (ray.side == 1 && ray.rayy > 0)
 		return (0x00FFFF00);
 	return (0);
@@ -40,12 +40,16 @@ void	fill_column(t_cub *cub, t_ray ray, int x)
 	int		ceiling_height;
 	int		y;
 
-	wall_height = (float)WIN_H / ray.dist;
+	wall_height = (float)WIN_H / (ray.dist * 2.0);
 	wall_color = get_color(ray);
 	y = 0;
 	ceiling_height = (WIN_H - (int)wall_height) / 2;
 	while (y < ceiling_height)
+	{
+		pix_put(&cub->img, x, WIN_H - y - 1, 0x00FFD700);
+		pix_put(&cub->img, x, y, 0x00FF00FF);
 		y++;
+	}
 	while (y <= WIN_H / 2)
 	{
 		pix_put(&cub->img, x, WIN_H - y - 1, wall_color);

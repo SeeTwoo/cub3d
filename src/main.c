@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 22:37:17 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/25 13:43:04 by seetwoo          ###   ########.fr       */
+/*   Updated: 2025/07/26 12:24:04 by wbeschon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	crash_init(t_cub *cub, int angle)
 {
 	ft_memcpy(cub->map[0], "11111", 5);
-	ft_memcpy(cub->map[1], "10001", 5);
+	ft_memcpy(cub->map[1], "10011", 5);
 	ft_memcpy(cub->map[2], "10001", 5);
 	ft_memcpy(cub->map[3], "10001", 5);
 	ft_memcpy(cub->map[4], "11111", 5);

@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 18:37:53 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/25 13:32:28 by seetwoo          ###   ########.fr       */
+/*   Updated: 2025/07/26 14:03:19 by wbeschon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,22 @@
 # include <stdio.h>
 
 # ifndef WIN_W
-#  define WIN_W	1000 
+#  define WIN_W	1600 
 # endif
 
 # ifndef WIN_H
-#  define WIN_H 600
+#  define WIN_H 900
 # endif
 
 # ifndef PI
 #  define PI 3.14159265358979323846
 # endif
+
+
+/*# ifndef PI
+#  define PI 49.3
+# endif
+*/
 
 # ifndef LEFT
 #  define LEFT 65361
@@ -39,6 +45,22 @@
 
 # ifndef RIGHT
 #  define RIGHT 65363
+# endif
+
+# ifndef W
+#  define W 119
+# endif
+
+# ifndef A
+#  define A 97
+# endif
+
+# ifndef S
+#  define S 115
+# endif
+
+# ifndef D
+#  define D 100
 # endif
 
 #endif

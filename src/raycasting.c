@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 05:21:55 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/25 14:15:10 by seetwoo          ###   ########.fr       */
+/*   Updated: 2025/07/26 14:26:12 by wbeschon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,29 +60,23 @@ void	dda(t_cub *cub, t_ray *ray, int x)
 {
 	float	cam_x;
 
-	cam_x = -1.0 + ((double)x * (2.0 / WIN_W));
+	cam_x = 1.0 - ((double)x * (2.0 / WIN_W));
 	ray_init(cub, ray, cam_x);
 	while (cub->map[ray->mapy][ray->mapx] != '1')
 	{
 		if (ray->rayx && ray->distx < ray->disty)
 		{
-			if (x == 0 || x == WIN_W - 1)
-				printf("\nhorizontal move, distx = %f and disty = %f\n", ray->distx, ray->disty);
 			ray->distx += ray->stepx;
 			ray->mapx += ray->map_step_x;
 			ray->side = 0;
 		}
 		else
 		{
-			if (x == 0 || x == WIN_W - 1)
-				printf("\nvertical move\n");
 			ray->disty += ray->stepy;
 			ray->mapy += ray->map_step_y;
 			ray->side = 1;
 		}
 	}
-	if (x == 0 || x == WIN_W - 1)
-		printf("wall is on %d, %d and it is %c\n", ray->mapx, ray->mapy, cub->map[ray->mapx][ray->mapy]);
 	wall_intersection(cub, ray);
 }
 
