@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_column.c                                      :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seetwoo <seetwoo@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 13:03:12 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/26 16:44:20 by wbeschon         ###   ########.fr       */
+/*   Updated: 2025/07/26 19:11:11 by wbeschon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,13 @@ void	fill_column(t_cub *cub, t_ray ray, int x)
 		pix_put(&cub->img, x, y, wall_color);
 		y++;
 	}
+}
+
+int	new_frame(t_cub *cub)
+{
+	ft_memset(cub->img.addr, 0, WIN_W * WIN_H * (cub->img.bpx / 8));
+	vectors(cub);
+	raycasting(cub);
+	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img, 0, 0);
+	return (0);
 }

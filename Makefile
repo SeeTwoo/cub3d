@@ -14,10 +14,13 @@ MLX_NAME = $(MLX_DIR)/libmlx.a
 SRC_DIR = src
 SRC_FILES = cleaners.c \
 			events.c \
-			fill_column.c \
+			init.c \
+			keyboard_events.c \
 			main.c \
 			raycasting.c \
-			vectors.c
+			render.c \
+			vectors.c \
+			wasd_movements.c
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 OBJ_DIR = obj

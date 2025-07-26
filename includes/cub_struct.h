@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 18:48:27 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/23 16:18:49 by seetwoo          ###   ########.fr       */
+/*   Updated: 2025/07/26 18:49:31 by wbeschon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 typedef struct s_cub	t_cub;
 typedef struct s_data	t_data;
 typedef struct s_ray	t_ray;
+typedef int	(*t_keyboard_func)(t_cub *cub);
 
 struct s_data
 {
@@ -53,6 +54,7 @@ struct s_cub
 	double	diry;
 	double	camx;
 	double	camy;
+	t_keyboard_func	keyboard_funcs[65364];
 };
 
 //side is a status varibable to know if the wall was horizontal (0) or vertical (1);
