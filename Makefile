@@ -12,7 +12,8 @@ MLX_DIR = minilibx-linux
 MLX_NAME = $(MLX_DIR)/libmlx.a
 
 SRC_DIR = src
-SRC_FILES = fill_column.c \
+SRC_FILES = events.c \
+			fill_column.c \
 			main.c \
 			raycasting.c \
 			vectors.c

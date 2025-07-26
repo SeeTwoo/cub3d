@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 05:21:55 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/25 09:31:51 by seetwoo          ###   ########.fr       */
+/*   Updated: 2025/07/25 14:15:10 by seetwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ void	ray_init(t_cub *cub, t_ray *ray, double cameraX)
 	ray->stepx = fabs(1.0 / ray->rayx);
 	ray->stepy = fabs(1.0 / ray->rayy);
 	if (ray->xsign)
-		ray->distx = (cub->px - (double)ray->mapx) * -ray->rayx;
+		ray->distx = (cub->px - (double)ray->mapx) * ray->stepx;
 	else
-		ray->distx = (1.0 - (cub->px - (double)ray->mapx)) * ray->rayx;
+		ray->distx = (1.0 - (cub->px - (double)ray->mapx)) * ray->stepx;
 	if (ray->ysign)
-		ray->disty = (cub->py - (double)ray->mapy) * -ray->rayy;
+		ray->disty = (cub->py - (double)ray->mapy) * ray->stepy;
 	else
-		ray->disty = (1.0 - (cub->py - (double)ray->mapy)) * ray->rayy;
+		ray->disty = (1.0 - (cub->py - (double)ray->mapy)) * ray->stepy;
 	ray->map_step_x = int_pow(-1, ray->xsign);
 	ray->map_step_y = int_pow(-1, ray->ysign);
 }

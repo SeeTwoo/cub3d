@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 18:37:53 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/24 09:07:49 by seetwoo          ###   ########.fr       */
+/*   Updated: 2025/07/25 13:32:28 by seetwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@
 
 # ifndef PI
 #  define PI 3.14159265358979323846
+# endif
+
+# ifndef LEFT
+#  define LEFT 65361
+# endif
+
+# ifndef RIGHT
+#  define RIGHT 65363
 # endif
 
 #endif

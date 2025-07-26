@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 22:37:17 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/25 08:09:37 by seetwoo          ###   ########.fr       */
+/*   Updated: 2025/07/25 13:43:04 by seetwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ int	main(int ac, char **av)
 	vectors(&cub);
 	raycasting(&cub);
 	mlx_put_image_to_window(cub.mlx, cub.mlx_win, cub.img.img, 0, 0);
+	set_hooks(&cub);
 	mlx_loop(cub.mlx);
 }
