@@ -6,7 +6,7 @@
 /*   By: seetwoo <seetwoo@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 13:03:12 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/26 12:28:42 by wbeschon         ###   ########.fr       */
+/*   Updated: 2025/07/26 16:44:20 by wbeschon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ void	fill_column(t_cub *cub, t_ray ray, int x)
 	ceiling_height = (WIN_H - (int)wall_height) / 2;
 	while (y < ceiling_height)
 	{
-		pix_put(&cub->img, x, WIN_H - y - 1, 0x00FFD700);
-		pix_put(&cub->img, x, y, 0x00FF00FF);
+		//pix_put(&cub->img, x, WIN_H - y - 1, 0x00FFD700);
+//		pix_put(&cub->img, x, y, 0x00FF00FF);
+		pix_put(&cub->img, x, WIN_H - y - 1, 0x00808080);
+		pix_put(&cub->img, x, y, 0x00F0F0F0);
 		y++;
 	}
 	while (y <= WIN_H / 2)

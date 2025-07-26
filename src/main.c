@@ -6,13 +6,13 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 22:37:17 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/26 12:24:04 by wbeschon         ###   ########.fr       */
+/*   Updated: 2025/07/26 17:47:10 by wbeschon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	crash_init(t_cub *cub, int angle)
+int	init(t_cub *cub, int angle)
 {
 	ft_memcpy(cub->map[0], "11111", 5);
 	ft_memcpy(cub->map[1], "10011", 5);
@@ -23,10 +23,19 @@ void	crash_init(t_cub *cub, int angle)
 	cub->py = 2.5;
 	cub->pangle = angle;
 	cub->mlx = mlx_init();
+	if (!cub->mlx)
+		return (error(cub));
 	cub->mlx_win = mlx_new_window(cub->mlx, WIN_W, WIN_H, "cub3d");
-	cub->img.img = mlx_new_image(cub->mlx, WIN_W, WIN_H);
+	if (!cub->mlx_win)
+		return (error(cub));
+	cub->img.img = NULL; //mlx_new_image(cub->mlx, WIN_W, WIN_H);
+	if (!cub->img.img)
+		return (error(cub));
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bpx,
 				&cub->img.ln_len, &cub->img.endn);
+	if (!cub->img.addr)
+		return (error(cub));
+	return (0);
 }
 
 int	main(int ac, char **av)
@@ -36,7 +45,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (0);
 //	temp_text_init(&cub);
-	crash_init(&cub, ft_atoi(av[1]));
+	init(&cub, ft_atoi(av[1]));
 	vectors(&cub);
 	raycasting(&cub);
 	mlx_put_image_to_window(cub.mlx, cub.mlx_win, cub.img.img, 0, 0);

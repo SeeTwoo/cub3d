@@ -6,7 +6,7 @@
 /*   By: seetwoo <seetwoo@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 13:34:23 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/26 14:16:49 by wbeschon         ###   ########.fr       */
+/*   Updated: 2025/07/26 17:40:25 by wbeschon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,20 @@ int	movement(int keycode, t_cub *cub)
 	return (0);
 }
 
+int	esc(t_cub *cub)
+{
+	free_all(cub);
+	exit(EXIT_SUCCESS);
+}
+
 int	keyb_input(int keycode, t_cub *cub)
 {
 	if (keycode == RIGHT || keycode == LEFT)
 		return (rotation(keycode, cub));
 	if (keycode == W || keycode == A || keycode == S || keycode == D)
 		return (movement(keycode, cub));
+	if (keycode == ESC)
+		return (esc(cub));
 	printf("wrong keycode\n");
 	return (0);
 }
