@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 05:21:55 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/26 14:26:12 by wbeschon         ###   ########.fr       */
+/*   Updated: 2025/07/27 10:25:57 by wbeschon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ void	wall_intersection(t_cub *cub, t_ray *ray)
 {
 	if (ray->side == 0)
 	{
-		ray->dist = (ray->mapx - cub->px + (1 - ray->map_step_x) / 2) / ray->rayx;
+		ray->dist = (ray->mapx - cub->px
+				+ (1 - ray->map_step_x) / 2) / ray->rayx;
 		ray->wall_column = cub->py + ray->dist * ray->rayy;
 	}
 	else
 	{
-		ray->dist = (ray->mapy - cub->py + (1 - ray->map_step_y) / 2) / ray->rayy;
+		ray->dist = (ray->mapy - cub->py
+				+ (1 - ray->map_step_y) / 2) / ray->rayy;
 		ray->wall_column = cub->px + ray->dist * ray->rayx;
 	}
 }
@@ -100,13 +102,19 @@ void	raycasting(t_cub *cub)
 after we get the position and angle of the player with the hooks, we compute a 
 dir vector and a camera plane vector
 
-using those vector we can compute the vectors of all the rays we need to render the screen
+using those vector we can compute the vectors of all the rays we need 
+to render the screen
 
-for every ray, we dda which is looking at every new tile the ray encounters if the tile has a wall in it. 
+for every ray, we dda which is looking at every new tile the ray encounters 
+if the tile has a wall in it. 
 
-when we find the wall we calculate the coordinates of the intersection between the ray and the wall, which will give us the vertical column of the texture to render
+when we find the wall we calculate the coordinates of the intersection 
+between the ray and the wall, which will give us the vertical 
+column of the texture to render
 
-we also need to determine the orientation of the wall we hit so we know which texture to apply
+we also need to determine the orientation of the wall we hit so we 
+know which texture to apply
 
-and we need to compute the length of the ray between the player position and the wall so we can scale the wall on the screen appropriately
+and we need to compute the length of the ray between the player position 
+and the wall so we can scale the wall on the screen appropriately
 */

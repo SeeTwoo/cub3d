@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 22:37:17 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/26 19:54:08 by wbeschon         ###   ########.fr       */
+/*   Updated: 2025/07/27 10:29:19 by wbeschon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	init(t_cub *cub, int angle)
 {
-	ft_memcpy(cub->map[0], "11111", 5);
-	ft_memcpy(cub->map[1], "10011", 5);
-	ft_memcpy(cub->map[2], "10001", 5);
-	ft_memcpy(cub->map[3], "10001", 5);
-	ft_memcpy(cub->map[4], "11111", 5);
+	ft_memcpy(cub->map[4], "1111111111", 10);
+	ft_memcpy(cub->map[3], "1001000001", 10);
+	ft_memcpy(cub->map[2], "1000111101", 10);
+	ft_memcpy(cub->map[1], "1000000001", 10);
+	ft_memcpy(cub->map[0], "1111111111", 10);
 	cub->px = 2.5;
 	cub->py = 2.5;
 	cub->pangle = angle;
@@ -32,7 +32,7 @@ int	init(t_cub *cub, int angle)
 	if (!cub->img.img)
 		return (error(cub));
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bpx,
-				&cub->img.ln_len, &cub->img.endn);
+			&cub->img.ln_len, &cub->img.endn);
 	if (!cub->img.addr)
 		return (error(cub));
 	init_keyboard_funcs(cub);
@@ -45,7 +45,6 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
-//	temp_text_init(&cub);
 	init(&cub, ft_atoi(av[1]));
 	new_frame(&cub);
 	set_hooks(&cub);

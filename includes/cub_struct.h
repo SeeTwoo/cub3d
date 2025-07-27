@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 18:48:27 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/26 18:49:31 by wbeschon         ###   ########.fr       */
+/*   Updated: 2025/07/27 10:20:16 by wbeschon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 typedef struct s_cub	t_cub;
 typedef struct s_data	t_data;
 typedef struct s_ray	t_ray;
-typedef int	(*t_keyboard_func)(t_cub *cub);
+typedef int				(*t_keyboard_func)(t_cub *cub);
 
 struct s_data
 {
@@ -38,26 +38,27 @@ cameray is the y component of the camera plane
 
 struct s_cub
 {
-	char	map[64][64];
-	char	textures_files[4][256];
-	int		west_text[64][64];
-	int		north_text[64][64];
-	int		east_text[64][64];
-	int		south_text[64][64];
-	t_data	img;
-	void	*mlx;
-	void	*mlx_win;
-	double	px;
-	double	py;
-	int		pangle;
-	double	dirx;
-	double	diry;
-	double	camx;
-	double	camy;
+	char			map[64][64];
+	char			textures_files[4][256];
+	int				west_text[64][64];
+	int				north_text[64][64];
+	int				east_text[64][64];
+	int				south_text[64][64];
+	t_data			img;
+	void			*mlx;
+	void			*mlx_win;
+	double			px;
+	double			py;
+	int				pangle;
+	double			dirx;
+	double			diry;
+	double			camx;
+	double			camy;
 	t_keyboard_func	keyboard_funcs[65364];
 };
 
-//side is a status varibable to know if the wall was horizontal (0) or vertical (1);
+//side is a status varibable to know if the wall was 
+//horizontal (0) or vertical (1);
 struct s_ray
 {
 	double	rayx;
