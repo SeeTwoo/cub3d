@@ -3,31 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
+/*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/04 22:37:17 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/27 10:29:19 by wbeschon         ###   ########.fr       */
+/*   Created: 2025/07/03 11:48:42 by sle-nogu          #+#    #+#             */
+/*   Updated: 2025/07/30 16:29:25 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../cub3d.h"
 
-int	init(t_cub *cub, int angle)
+int	init(t_cub *cub)
 {
-	ft_memcpy(cub->map[4], "1111111111", 10);
-	ft_memcpy(cub->map[3], "1001000001", 10);
-	ft_memcpy(cub->map[2], "1000111101", 10);
-	ft_memcpy(cub->map[1], "1000000001", 10);
-	ft_memcpy(cub->map[0], "1111111111", 10);
-	cub->px = 2.5;
-	cub->py = 2.5;
-	cub->pangle = angle;
-	cub->mlx = mlx_init();
-	if (!cub->mlx)
-		return (error(cub));
-	cub->mlx_win = mlx_new_window(cub->mlx, WIN_W, WIN_H, "cub3d");
-	if (!cub->mlx_win)
-		return (error(cub));
 	cub->img.img = mlx_new_image(cub->mlx, WIN_W, WIN_H);
 	if (!cub->img.img)
 		return (error(cub));
@@ -39,14 +25,31 @@ int	init(t_cub *cub, int angle)
 	return (0);
 }
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
-	t_cub	cub;
+	t_cub	*info;
+	int		i;
+	int 	row;
 
-	if (ac != 2)
+	i = 0;
+	row = 0;
+	info = malloc(sizeof(t_cub));
+	if (!info)
 		return (0);
-	init(&cub, ft_atoi(av[1]));
-	new_frame(&cub);
-	set_hooks(&cub);
-	mlx_loop(cub.mlx);
+	if (!init_cub(info))
+		return (free(info), 0);
+	if (!parsing(argc, argv, info))
+		return (free_clean(info), 0);
+	while(info->map->map[row])
+	{
+		printf("%s", info->map->map[row]);
+		row++;
+	}
+	printf("%f\n", info->px);
+	init(info);
+	new_frame(info);
+	set_hooks(info);
+	mlx_loop(info->mlx);
+	free_clean(info);
+	return (1);
 }
