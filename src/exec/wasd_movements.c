@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:37:00 by wbeschon          #+#    #+#             */
-/*   Updated: 2025/08/10 16:25:05 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/10 17:47:50 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	forward(t_cub *cub)
 		return (1);
 	cub->px = newx;
 	cub->py = newy;
-	return (new_frame(cub));
+	return (0);
 }
 
 int	backward(t_cub *cub)
@@ -41,7 +41,7 @@ int	backward(t_cub *cub)
 		return (1);
 	cub->px = newx;
 	cub->py = newy;
-	return (new_frame(cub));
+	return (0);
 }
 
 int	strafe_left(t_cub *cub)
@@ -55,7 +55,7 @@ int	strafe_left(t_cub *cub)
 		return (1);
 	cub->px = newx;
 	cub->py = newy;
-	return (new_frame(cub));
+	return (0);
 }
 
 int	strafe_right(t_cub *cub)
@@ -69,5 +69,5 @@ int	strafe_right(t_cub *cub)
 		return (1);
 	cub->px = newx;
 	cub->py = newy;
-	return (new_frame(cub));
+	return (0);
 }

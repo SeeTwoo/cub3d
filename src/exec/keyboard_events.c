@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:37:27 by wbeschon          #+#    #+#             */
-/*   Updated: 2025/07/30 14:59:19 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/10 17:54:27 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 int	rotate_left(t_cub *cub)
 {
 	cub->pangle -= ROT_STEP;
-	return (new_frame(cub));
+	return (0);
 }
 
 int	rotate_right(t_cub *cub)
 {
 	cub->pangle += ROT_STEP;
-	return (new_frame(cub));
+	return (0);
 }
 
 int	do_nothing(t_cub *cub)

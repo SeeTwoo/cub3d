@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:48:42 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/08/10 16:13:19 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/10 17:53:40 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,20 @@ int	init(t_cub *cub)
 
 int	main(int argc, char **argv)
 {
-	t_cub	*info;
-	int		i;
-	int		row;
+    t_cub	*info;
 
-	if (argc < 2)
-		return (error_message("Need arguments\n"));
-	i = 0;
-	row = 0;
-	info = malloc(sizeof(t_cub));
-	if (!info)
-		return (0);
-	if (!init_cub(info))
-		return (free(info), 0);
-	if (!parsing(argc, argv, info))
-		return (free_clean(info), 0);
-	init(info);
-	new_frame(info);
-	set_hooks(info);
-	mlx_loop(info->mlx);
-	free_all(info);
-	return (1);
+    if (argc < 2)
+        return (error_message("Need arguments\n"));
+    info = malloc(sizeof(t_cub));
+    if (!info)
+        return (0);
+    if (!init_cub(info))
+        return (free(info), 0);
+    if (!parsing(argc, argv, info))
+        return (free_clean(info), 0);
+    init(info);
+    set_hooks(info);
+    mlx_loop(info->mlx);
+    free_all(info);
+    return (1);
 }

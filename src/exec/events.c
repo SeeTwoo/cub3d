@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 13:34:23 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/08/10 16:22:28 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/10 17:53:59 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ int	keyb_input(int keycode, t_cub *cub)
 void	set_hooks(t_cub *cub)
 {
 	mlx_hook(cub->mlx_win, 2, 1, keyb_input, cub);
+	mlx_loop_hook(cub->mlx, new_frame, cub);
 }
