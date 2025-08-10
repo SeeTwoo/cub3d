@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:13:02 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/31 15:18:35 by wbeschon         ###   ########.fr       */
+/*   Updated: 2025/08/10 14:17:01 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ int	init_cub(t_cub *info)
 		return (0);
 	info->map->map_height = 0;
 	info->map->map_width = 0;
-	info->north = malloc(sizeof(t_text));
-	info->south = malloc(sizeof(t_text));
-	info->east = malloc(sizeof(t_text));
-	info->west = malloc(sizeof(t_text));
+	info->north = ft_calloc(sizeof(t_text), 1);
+	info->south = ft_calloc(sizeof(t_text), 1);
+	info->east = ft_calloc(sizeof(t_text), 1);
+	info->west = ft_calloc(sizeof(t_text), 1);
 	if (!info->north | !info->south | !info->west | !info->east)
 	{
 		free_texture(info);
@@ -77,16 +77,16 @@ int	init_text(t_text *side, void *mlx, char *str)
 	i = skip_white(str, 0);
 	str_final = ft_strdup(str + i);
 	if (!str_final)
-		return (-1);
+		return (0);
 	str_final[ft_strlen(str_final) - 1] = 0;
 	side->img_ptr = mlx_xpm_file_to_image(mlx, str_final, &side->img_width,
 			&side->img_height);
 	if (!side->img_ptr)
-		return (free(str_final), -1);
+		return (free(str_final), error_message("can't open texture\n"));
 	side->addr = mlx_get_data_addr(side->img_ptr, &side->bpx, &side->ln_len,
 			&side->endn);
 	if (!side->addr)
-		return (free(str_final), mlx_destroy_image(mlx, side->img_ptr), -1);
+		return (free(str_final), mlx_destroy_image(mlx, side->img_ptr), 0);
 	free(str_final);
 	return (1);
 }

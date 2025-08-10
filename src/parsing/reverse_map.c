@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:50:22 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 17:14:49 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/10 16:17:58 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,3 @@ int	reverse_map(t_map *map, char **map_patern)
 	}
 	return (1);
 }
-

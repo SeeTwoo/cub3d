@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:48:42 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 16:29:25 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/10 16:13:19 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ int	main(int argc, char **argv)
 {
 	t_cub	*info;
 	int		i;
-	int 	row;
+	int		row;
 
+	if (argc < 2)
+		return (error_message("Need arguments\n"));
 	i = 0;
 	row = 0;
 	info = malloc(sizeof(t_cub));
@@ -40,16 +42,10 @@ int	main(int argc, char **argv)
 		return (free(info), 0);
 	if (!parsing(argc, argv, info))
 		return (free_clean(info), 0);
-	while(info->map->map[row])
-	{
-		printf("%s", info->map->map[row]);
-		row++;
-	}
-	printf("%f\n", info->px);
 	init(info);
 	new_frame(info);
 	set_hooks(info);
 	mlx_loop(info->mlx);
-	free_clean(info);
+	free_all(info);
 	return (1);
 }

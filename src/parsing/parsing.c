@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:53:28 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 17:53:40 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/10 16:17:51 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ int	parsing(int argc, char **argv, t_cub *info)
 		return (0);
 	if (!file_is_valid(info))
 		return (0);
+	if (!info->west->img_ptr || !info->north->img_ptr
+		|| !info->south->img_ptr || !info->east->img_ptr)
+		return (error_message("Missing texture\n"));
 	if (!parse_map(info, info->map))
 		return (0);
 	if (!map_is_closed(info->map->map))

@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 12:05:38 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 14:09:30 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/10 14:31:51 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,4 @@ void	close_mlx(t_cub *info)
 	if (info->west->img_ptr)
 		mlx_destroy_image(info->mlx, info->west->img_ptr);
 	free(info->west);
-	if (info->mlx_win)
-		mlx_destroy_window(info->mlx, info->mlx_win);
-	if (info->mlx)
-		mlx_destroy_display(info->mlx);
-	free(info->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 21:08:19 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 14:12:12 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/10 14:23:33 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ static int	convert_rgb_to_int(int *color, char *str)
 	while (passage < 3)
 	{
 		if (!parse_one_value(str, &i, &value))
-			return (0);
+			return (-1);
 		apply_color_shift(color, value, passage);
 		if (!check_separator(str, &i, passage))
-			return (0);
+			return (-1);
 		passage++;
 	}
 	i = skip_white(str, i);
@@ -77,7 +77,7 @@ int	get_color_pars(t_cub *info, char *str)
 	int	result;
 
 	i = 0;
-	result = 0;
+	result = -1;
 	if (info->color_ceilling != -1 && info->color_floor != -1)
 		return (2);
 	while (str[i] == ' ')
@@ -86,5 +86,7 @@ int	get_color_pars(t_cub *info, char *str)
 		result = convert_rgb_to_int(&info->color_floor, &str[i + 1]);
 	else if (str[i] == 'C')
 		result = convert_rgb_to_int(&info->color_ceilling, &str[i + 1]);
+	if (result == -1 && str[i] != '\n')
+		return (error_message("Missing color\n"));
 	return (result);
 }

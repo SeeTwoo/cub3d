@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 17:39:32 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 17:05:28 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/10 13:56:42 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,14 @@ int	map_is_closed(char **map)
 			if (side(map[j][i]))
 				nb_pos++;
 			if ((map[j][i] == '0' || side(map[j][i])) && !border(map, i, j))
-				return (0);
+				return (error_message("Map isn't closed"));
 			i++;
 		}
 		j++;
 	}
-	if (nb_pos != 1)
-		return (0);
+	if (nb_pos < 1)
+		return (error_message("Missing spawn"));
+	else if (nb_pos > 1)
+		return (error_message("Too many spawn"));
 	return (1);
 }
