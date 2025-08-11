@@ -6,7 +6,7 @@
 /*   By: seetwoo <waltibee@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 05:53:18 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/26 19:54:37 by wbeschon         ###   ########.fr       */
+/*   Updated: 2025/08/11 14:50:33 by SeeTwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,7 @@ void	raycasting(t_cub *cub);
 void	set_hooks(t_cub *cub);
 void	vectors(t_cub *cub);
 
-int		do_nothing(t_cub *cub);
-int		forward(t_cub *cub);
-int		backward(t_cub *cub);
-int		strafe_left(t_cub *cub);
-int		strafe_right(t_cub *cub);
-int		rotate_right(t_cub *cub);
-int		rotate_left(t_cub *cub);
-int		esc(t_cub *cub);
+int		movement(t_cub *cub);
 
 int		init_keyboard_funcs(t_cub *cub);
 

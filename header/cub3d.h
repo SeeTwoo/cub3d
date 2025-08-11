@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:48:59 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 14:10:55 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/11 14:41:50 by SeeTwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 # include <fcntl.h>
 # include <math.h>
 # include <errno.h>
-# include "libft/libft.h"
-# include "header/parsing.h"
-# include "header/utils.h"
-# include "header/cub_def.h"
-# include "header/cub_func.h"
-# include "header/structure.h"
-# include "minilibx-linux/mlx.h"
+# include "libft.h"
+# include "parsing.h"
+# include "utils.h"
+# include "cub_def.h"
+# include "cub_func.h"
+# include "structure.h"
+# include "mlx.h"
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:48:42 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/08/11 10:26:11 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/11 14:52:10 by SeeTwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 int	init(t_cub *cub)
 {
@@ -24,7 +24,9 @@ int	init(t_cub *cub)
 			&cub->img.ln_len, &cub->img.endn);
 	if (!cub->img.addr)
 		return (error(cub));
-	init_keyboard_funcs(cub);
+	cub->speed = 0;
+	cub->lateral_speed = 0;
+	cub->rotation_speed = 0;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 13:45:32 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/08/11 12:17:52 by SeeTwoo          ###   ########.fr       */
+/*   Updated: 2025/08/11 14:01:37 by SeeTwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define STRUCTURE_H
 
 typedef struct s_cub	t_cub;
-typedef int				(*t_keyboard_func)(t_cub *cub);
 
 typedef struct s_text
 {
@@ -81,7 +80,9 @@ struct s_cub
 	double			diry;
 	double			camx;
 	double			camy;
-	t_keyboard_func	keyboard_funcs[65364];
+	int				speed;
+	int				lateral_speed;
+	int				rotation_speed;
 };
 
 typedef struct s_ray
