@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 13:24:34 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/08/10 14:43:55 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/11 13:05:32 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void	free_clean(t_cub *cub)
 {
 	close_mlx(cub);
-	if (cub->mlx_win)
-		mlx_destroy_window(cub->mlx, cub->mlx_win);
 	if (cub->mlx)
 		mlx_destroy_display(cub->mlx);
 	if (cub->map->map)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_def.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wbeschon <wbeschon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 17:24:36 by wbeschon          #+#    #+#             */
-/*   Updated: 2025/07/26 19:43:20 by wbeschon         ###   ########.fr       */
+/*   Updated: 2025/08/11 12:21:57 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB_DEF_H
 
 # ifndef WIN_W
-#  define WIN_W	1600 
+#  define WIN_W 1600
 # endif
 
 # ifndef WIN_H
@@ -26,8 +26,8 @@
 # endif
 
 /*# ifndef PI
-#  define PI 49.3
-# endif
+# define PI 49.3
+#endif
 */
 
 # ifndef LEFT

@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 17:39:32 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/08/10 13:56:42 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/11 12:39:28 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static int	border(char **map, int x, int y)
 		return (0);
 	if ((int)ft_strlen(map[y + 1]) <= x || map[y + 1][x] == ' ')
 		return (0);
-	if (map[y][x - 1] == ' ' || map[y][x - 1] == '\0')
+	if (map[y][x - 1] == ' ' || map[y][x - 1] == '\n')
 		return (0);
-	if (map[y][x + 1] == ' ' || map[y][x + 1] == '\0')
+	if (map[y][x + 1] == ' ' || map[y][x + 1] == '\n')
 		return (0);
 	return (1);
 }

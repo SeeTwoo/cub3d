@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 19:43:26 by seb               #+#    #+#             */
-/*   Updated: 2025/07/30 14:04:14 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/11 13:06:46 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@ static int	read_map_to_list(t_cub *info, t_map *map, t_link_map **head)
 		info->str = get_next_line(info->fd_map);
 		map->map_height++;
 	}
+	if (info->str && !line_is_map_valid(info->str))
+		return (free(info->str), free_node(*head)
+			, error_message("Error in map format\n"));
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:17:57 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 14:05:04 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/11 12:22:39 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	close_fd(int *fd);
 //	--- close_all_fd.c --- //
 
 //	--- init.c --- //
-int		init_cub(t_cub *info);                            
+int		init_cub(t_cub *info);
 int		open_fd(int *fd, char *str);
-int	    init_text(t_text *side, void *mlx, char *str);
+int		init_text(t_text *side, void *mlx, char *str);
 //	--- init_fd.c --- //
 
 //  --- close_mlx.c --- //
@@ -36,19 +36,19 @@ void	close_mlx(t_cub *info);
 //  --- close_mlx.c --- //
 
 //  --- skip_white.c --- //
-int	    skip_white(char *str, int i);
+int		skip_white(char *str, int i);
 //  --- skip_white.c --- //
 
 //  --- free_text.c --- //
-void    free_texture(t_cub *info);
+void	free_texture(t_cub *info);
 //  --- free_text.c --- //
 
 //  --- free_linked_list.c --- //
-void    free_node(t_link_map *node);
+void	free_node(t_link_map *node);
 //  --- free_linked_list.c --- //
 
 //  --- free_clean.c --- //
-void	free_clean(t_cub* info);
+void	free_clean(t_cub *info);
 //  --- free_clean.c --- //
 
 //  --- skip_empty_line.c --- //
