@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:13:02 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/08/10 14:17:01 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/11 10:25:11 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@ int	init_mlx(t_cub *info)
 	info->mlx = mlx_init();
 	if (info->mlx == NULL)
 		return (0);
-	info->mlx_win = mlx_new_window(info->mlx, WIN_W, WIN_H, "cub3d null");
-	if (info->mlx_win == NULL)
-		return (free(info->mlx), 0);
 	return (1);
 }
 
@@ -82,7 +79,10 @@ int	init_text(t_text *side, void *mlx, char *str)
 	side->img_ptr = mlx_xpm_file_to_image(mlx, str_final, &side->img_width,
 			&side->img_height);
 	if (!side->img_ptr)
-		return (free(str_final), error_message("can't open texture\n"));
+		return (free(str_final), error_message("Can't open texture\n"));
+	if (side->img_height != 64 || side->img_width != 64)
+		return (free(str_final), mlx_destroy_image(mlx, side->img_ptr)
+			, error_message("Wrong texture format\n"));
 	side->addr = mlx_get_data_addr(side->img_ptr, &side->bpx, &side->ln_len,
 			&side->endn);
 	if (!side->addr)
