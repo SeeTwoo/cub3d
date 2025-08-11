@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:13:02 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/08/11 10:25:11 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/11 12:11:39 by SeeTwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,6 @@ int	init_text(t_text *side, void *mlx, char *str)
 			&side->img_height);
 	if (!side->img_ptr)
 		return (free(str_final), error_message("Can't open texture\n"));
-	if (side->img_height != 64 || side->img_width != 64)
-		return (free(str_final), mlx_destroy_image(mlx, side->img_ptr)
-			, error_message("Wrong texture format\n"));
 	side->addr = mlx_get_data_addr(side->img_ptr, &side->bpx, &side->ln_len,
 			&side->endn);
 	if (!side->addr)

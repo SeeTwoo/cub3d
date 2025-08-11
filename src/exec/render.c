@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 13:03:12 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/08/10 16:13:53 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/11 12:16:52 by SeeTwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ int	color_in_text(t_column *column, int y)
 	wall_height = column->wall_height;
 	ceiling_height = column->ceiling_height;
 	if (ceiling_height > 0)
-		column->text_y = (double)((double)y / ((double)wall_height / 64.0));
+		column->text_y = (double)((double)y / ((double)wall_height
+					/ column->text->img_height));
 	else
 		column->text_y = (double)((double)(y - ceiling_height)
-				/ ((double)wall_height / 64.0));
+				/ ((double)wall_height / column->text->img_height));
 	addr = column->text->addr + (column->text_y * column->text->ln_len
 			+ column->text_x * (column->text->bpx / 8));
 	return (*(unsigned int *)addr);

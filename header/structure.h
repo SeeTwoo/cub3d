@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 13:45:32 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/08/10 10:35:51 by SeeTwoo          ###   ########.fr       */
+/*   Updated: 2025/08/11 12:17:52 by SeeTwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_link_map
 	int			x;
 	int			y;
 	char		*value;
-	struct s_link_map	*next;
+	struct 		s_link_map	*next;
 }					t_link_map;
 
 typedef struct s_data
@@ -58,7 +58,7 @@ typedef struct s_column
 	int		ceiling_height;
 	int		text_x;
 	int		text_y;
-} t_column;
+}	t_column;
 
 struct s_cub
 {
