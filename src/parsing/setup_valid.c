@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "cub3d.h"
 
 static int	test(t_cub *info)
 {
@@ -28,19 +28,24 @@ static int	test(t_cub *info)
 int	setup_valid(t_cub *info)
 {
 	int		result;
+	int		i;
 
+	i = 0;
 	while (1)
 	{
 		result = 1;
 		info->str = get_next_line(info->fd_map);
-		if (!info->str)
+		if (!info->str && i != 0)
 			return (close_all_fd(info), 0);
+		if (!info->str && i == 0)
+			return (close_all_fd(info), error_message("Empty file\n"));
 		result = test(info);
 		if ((result == -1 && info->str[0] != '\n') || result == 0)
 			return (free(info->str), 0);
 		else if (result == 2)
 			return (1);
 		free(info->str);
+		i++;
 	}
 	return (1);
 }

@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 char	*skip_empty_line(t_cub *info)
 {
-	while (info->str[0] == '\n')
+	while (info->str[0] && info->str[0] == '\n')
 	{
 		free(info->str);
 		info->str = get_next_line(info->fd_map);

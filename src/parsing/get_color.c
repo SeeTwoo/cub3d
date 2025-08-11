@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 static void	apply_color_shift(int *color, int value, int passage)
 {
@@ -59,7 +59,7 @@ static int	convert_rgb_to_int(int *color, char *str)
 	while (passage < 3)
 	{
 		if (!parse_one_value(str, &i, &value))
-			return (-1);
+			return (-2);
 		apply_color_shift(color, value, passage);
 		if (!check_separator(str, &i, passage))
 			return (-1);
@@ -88,5 +88,7 @@ int	get_color_pars(t_cub *info, char *str)
 		result = convert_rgb_to_int(&info->color_ceilling, &str[i + 1]);
 	if (result == -1 && str[i] != '\n')
 		return (error_message("Missing color\n"));
+	if (result == -2 && str[i] != '\n')
+		return (0);
 	return (result);
 }

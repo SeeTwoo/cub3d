@@ -6,13 +6,13 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 22:46:15 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/30 13:57:06 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/11 14:35:29 by SeeTwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
-int	init_keyboard_funcs(t_cub *cub)
+/*int	init_keyboard_funcs(t_cub *cub)
 {
 	int	i;
 
@@ -28,3 +28,4 @@ int	init_keyboard_funcs(t_cub *cub)
 	cub->keyboard_funcs[ESC] = esc;
 	return (0);
 }
+*/

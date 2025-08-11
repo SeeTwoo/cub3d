@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "cub3d.h"
 
 int	parsing(int argc, char **argv, t_cub *info)
 {
@@ -22,7 +22,7 @@ int	parsing(int argc, char **argv, t_cub *info)
 		return (0);
 	if (!info->west->img_ptr || !info->north->img_ptr
 		|| !info->south->img_ptr || !info->east->img_ptr)
-		return (error_message("Missing texture\n"));
+		return (free(info->str), error_message("Missing texture\n"));
 	if (!parse_map(info, info->map))
 		return (0);
 	if (!map_is_closed(info->map->map))

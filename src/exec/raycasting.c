@@ -6,11 +6,11 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 05:21:55 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/07/31 19:58:55 by SeeTwoo          ###   ########.fr       */
+/*   Updated: 2025/08/11 15:17:23 by SeeTwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 //the bit manipulation is for extracting the sign bit of the coordinate
 //(0 for positive and 1 for negative)

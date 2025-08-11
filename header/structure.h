@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 13:45:32 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/08/11 12:42:47 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/11 16:16:11 by SeeTwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define STRUCTURE_H
 
 typedef struct s_cub	t_cub;
-typedef int				(*t_keyboard_func)(t_cub *cub);
 
 typedef struct s_text
 {
@@ -62,26 +61,28 @@ typedef struct s_column
 
 struct					s_cub
 {
-	t_text				*north;
-	t_text				*south;
-	t_text				*east;
-	t_text				*west;
-	t_map				*map;
-	t_data				img;
-	int					fd_map;
-	int					color_floor;
-	int					color_ceilling;
-	void				*mlx;
-	void				*mlx_win;
-	char				*str;
-	double				px;
-	double				py;
-	int					pangle;
-	double				dirx;
-	double				diry;
-	double				camx;
-	double				camy;
-	t_keyboard_func		keyboard_funcs[65364];
+	t_text			*north;
+	t_text			*south;
+	t_text			*east;
+	t_text			*west;
+	t_map			*map;
+	t_data			img;
+	int				fd_map;
+	int				color_floor;
+	int				color_ceilling;
+	void			*mlx;
+	void			*mlx_win;
+	char			*str;
+	double			px;
+	double			py;
+	int				pangle;
+	double			dirx;
+	double			diry;
+	double			camx;
+	double			camy;
+	int				speed;
+	int				lateral_speed;
+	int				rotation_speed;
 };
 
 typedef struct s_ray

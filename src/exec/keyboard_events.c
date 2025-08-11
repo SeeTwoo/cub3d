@@ -6,25 +6,25 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:37:27 by wbeschon          #+#    #+#             */
-/*   Updated: 2025/08/10 17:54:27 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/08/11 14:36:02 by SeeTwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 #ifndef ROT_STEP
 # define ROT_STEP 2
 #endif
 
-int	rotate_left(t_cub *cub)
+/*int	rotate_left(t_cub *cub)
 {
-	cub->pangle -= ROT_STEP;
+	cub->rotate_speed = 1;
 	return (0);
 }
 
 int	rotate_right(t_cub *cub)
 {
-	cub->pangle += ROT_STEP;
+	cub->rotate_speed = -1;
 	return (0);
 }
 
@@ -39,3 +39,4 @@ int	esc(t_cub *cub)
 	free_all(cub);
 	exit(EXIT_SUCCESS);
 }
+*/

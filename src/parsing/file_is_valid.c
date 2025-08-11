@@ -10,13 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "cub3d.h"
 
 int	file_is_valid(t_cub *info)
 {
 	if (!setup_valid(info))
 	{
-		close_fd(&info->fd_map);
+		if (info->fd_map != -1)
+			close_fd(&info->fd_map);
 		return (0);
 	}
 	return (1);

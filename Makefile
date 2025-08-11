@@ -1,8 +1,8 @@
 NAME=cub3d
 LIBFTNAME=libft.a
 CC=cc
-INCLUDE= -Iheader
-CFLAGS=-Wall -Werror -Wextra -Ilibft -g3
+INCLUDE= -Iheader -Iminilibx-linux
+CFLAGS=-Wall -Werror -Wextra -Ilibft
 DFLAGS= $(CFLAGS) -g3
 LIBFLAGS= -lft -Llibft
 LIBFTDIR = ./libft
@@ -33,10 +33,10 @@ SRC=    src/main.c \
 		src/exec/events.c \
 		src/exec/init.c \
 		src/exec/keyboard_events.c \
+		src/exec/movement.c \
 		src/exec/raycasting.c \
 		src/exec/render.c \
 		src/exec/vectors.c \
-		src/exec/wasd_movements.c
 	
 OBJ_DIR=obj
 OBJS=$(SRC:%.c=$(OBJ_DIR)/%.o)
@@ -49,11 +49,11 @@ MLX = $(MLX_DIR)/libmlx.a
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME):$(MLX) $(OBJS)
 	@make -C $(LIBFTDIR)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFLAGS) $(MLX) -lXext -lX11 -lm
+	$(CC) $(CFLAGS) $(INCLUDE) $(OBJS) -o $(NAME) $(LIBFLAGS) $(MLX) -lXext -lX11 -lm
 
 $(MLX):
 	$(MAKE) -C $(MLX_DIR)

@@ -6,11 +6,11 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 13:03:12 by seetwoo           #+#    #+#             */
-/*   Updated: 2025/08/11 12:16:52 by SeeTwoo          ###   ########.fr       */
+/*   Updated: 2025/08/11 15:47:12 by SeeTwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 void	pix_put(t_data *data, int x, int y, int color)
 {
@@ -30,7 +30,8 @@ t_text	*get_text(t_ray ray, t_cub *cub)
 		return (cub->south);
 	if (ray.side == 1 && ray.rayy > 0)
 		return (cub->north);
-	return (0);
+	printf("no text\n");
+	return (NULL);
 }
 
 int	color_in_text(t_column *column, int y)
@@ -83,6 +84,7 @@ void	fill_column(t_cub *cub, t_ray ray, int x)
 
 int	new_frame(t_cub *cub)
 {
+	movement(cub);
 	ft_memset(cub->img.addr, 0, WIN_W * WIN_H * (cub->img.bpx / 8));
 	vectors(cub);
 	raycasting(cub);
