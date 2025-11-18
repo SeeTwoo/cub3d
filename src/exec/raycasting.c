@@ -63,7 +63,7 @@ void	dda(t_cub *cub, t_ray *ray, int x)
 {
 	float	cam_x;
 
-	cam_x = 1.0 - ((double)x * (2.0 / WIN_W));
+	cam_x = 1.0 - ((double)x * (2.0 / RENDER_W));
 	ray_init(cub, ray, cam_x);
 	while (cub->map->map[ray->mapy][ray->mapx] != '1')
 	{
@@ -89,7 +89,7 @@ void	raycasting(t_cub *cub)
 	int		x;
 
 	x = 0;
-	while (x < WIN_W)
+	while (x < RENDER_W)
 	{
 		ray.mapx = (int)cub->px;
 		ray.mapy = (int)cub->py;

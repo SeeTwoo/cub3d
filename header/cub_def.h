@@ -21,6 +21,8 @@
 #  define WIN_H 900
 # endif
 
+#define RENDER_W 100
+
 # ifndef PI
 #  define PI 3.14159265358979323846
 # endif

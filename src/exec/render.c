@@ -59,26 +59,39 @@ void	fill_column(t_cub *cub, t_ray ray, int x)
 	int			y_wall;
 	int			y_ceiling;
 	int			screen_wall_height;
+	// 1. Calculate the scale factor
+	int			scale_factor = WIN_W / RENDER_W;
+	int			scaled_x;
 
 	column.wall_height = (int)((double)WIN_H / ray.dist);
 	column.ceiling_height = (WIN_H - column.wall_height) / 2;
 	column.text = get_text(ray, cub);
 	column.text_x = (int)(ray.wall_column * (double)column.text->img_width);
-	y_ceiling = 0;
-	while (y_ceiling < column.ceiling_height)
+
+	// 2. Loop to draw a wider, scaled-up column
+	scaled_x = 0;
+	while (scaled_x < scale_factor)
 	{
-		pix_put(&cub->img, x, y_ceiling, cub->color_ceilling);
-		pix_put(&cub->img, x, WIN_H - 1 - y_ceiling, cub->color_floor);
-		y_ceiling++;
-	}
-	y_wall = 0;
-	screen_wall_height = WIN_H - (2 * y_ceiling);
-	while (y_wall < screen_wall_height)
-	{
-		pix_put(&cub->img, x,
-			y_ceiling + y_wall,
-			color_in_text(&column, y_wall));
-		y_wall++;
+		int current_screen_x = x * scale_factor + scaled_x;
+
+		// Your original vertical drawing logic is now here
+		y_ceiling = 0;
+		while (y_ceiling < column.ceiling_height)
+		{
+			pix_put(&cub->img, current_screen_x, y_ceiling, cub->color_ceilling);
+			pix_put(&cub->img, current_screen_x, WIN_H - 1 - y_ceiling, cub->color_floor);
+			y_ceiling++;
+		}
+		y_wall = 0;
+		screen_wall_height = WIN_H - (2 * y_ceiling);
+		while (y_wall < screen_wall_height)
+		{
+			pix_put(&cub->img, current_screen_x,
+				y_ceiling + y_wall,
+				color_in_text(&column, y_wall));
+			y_wall++;
+		}
+		scaled_x++;
 	}
 }
 
